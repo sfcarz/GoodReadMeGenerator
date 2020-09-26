@@ -119,8 +119,13 @@ async function generator() {
     \n**${url}
     `)
 
-    const writeResult = fs.readFileSync(path.join(__dirname, './assets', 'readme.md'),
-        finalProduct)
+    try {
+        const writeResult = fs.writeFileSync(path.join(__dirname, 'assets', 'readme.md'),
+            finalProduct)
+    } catch (error) {
+        console.error(error);
+    };
+
     console.log('Generating File...');
 };
 
