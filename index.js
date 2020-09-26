@@ -78,11 +78,52 @@ async function generator() {
     const picture = readMeCreator.profilePicture;
     
     const ghRequest = await axios.get(`https://api.github.com/users/${userName}`);
-    // console.log(ghRequest);
+    console.log(ghRequest);
     const ghData = ghRequest.data;
-    // const gh
+    const login = ghData.login;
+    const avatar = ghData.avatar_url;
+    const url = ghData.url;
 
+    const finalProduct = (`
+    # ${title}
+    ${description}
+    \n## Table of Contents
+    \n* [What you'll need to run program](#install)
+    \n* [How to Use Application](#usage)
+    \n* [License](#license)
+    \n* [Contributors](#contributors)
+    \n* [Example](#test)
+    \n
+    ## Programs/packages to install to run program
+    ${install}
+    \n
+    ## How to Use Application
+    ${usage}
+    \n
+    ## License 
+    ${license}
+    \n
+    ## List of Contributors
+    ${contributors}
+    \n
+    ## Example of a final product
+    ${test}
+    \n
+    ## Author
+    \n![ProfileImage](${avatar})
+    \n
+    ## Git Hub User Name
+    \n**${login}**
+    \n
+    ## Author Git Hub URL Link
+    \n**${url}
+    `)
 
+    const writeResult = fs.readFileSync(path.join(__dirname, './assets', 'readme.md'),
+        finalProduct)
+    console.log('Generating File...');
 };
 
 generator();
+
+// Creating an application or function to help create a ReadMe with the vitality to be effective.The generator will be structured in a specific form to maximize transfer of information from handler to user.
