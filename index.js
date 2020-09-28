@@ -95,7 +95,7 @@ async function generator() {
     \n## How to Use\n${howToUse}
     \n## License 
     ${license}
-    \n## Contributors
+    \n## Contributors / Credits
     ${contributors}
     \n## Author\n*${authorName}*\n[ProfileImage](${avatar})
     \n## Git Hub User Name\n**${login}**
