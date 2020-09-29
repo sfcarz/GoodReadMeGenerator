@@ -110,10 +110,12 @@ async function generator() {
 - [How to Use Application](#step-By-step)
 - [License](#license)
 - [How to use Application](#howToUse)
+- [Example](#Example)
 - [Contributors](#contributors-/-Credits)
     \n## Install\nYou will need these packages to run the Generator\n * ${packages}
     \n## Step By Step\n * ${projectSteps}
     \n## How to Use\n * ${howToUse}
+    \n## Example\n * ![](readMe.gif)
     \n## License
     \n * ${license}
     \n## Contributors / Credits

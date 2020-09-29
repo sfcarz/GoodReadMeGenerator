@@ -23,6 +23,9 @@ You will need these packages to run the Generator
     
 ## How to Use
  * Make sure you have Node installed. Download the following packages, node_modules, axios and inquirer. In your terminal simply run node and the name of your file like so, 'node index.js'. Follow and answer all the questions as detail as possible.
+
+ ## Example 
+ * ![](readMe.gif)
     
 ## License
     
