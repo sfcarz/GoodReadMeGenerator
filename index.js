@@ -68,50 +68,72 @@ async function generator() {
     console.log('End Result from all the questions');
     console.log(readMeCreator);
 
-    const title = readMeCreator.projectTitle;
-    const description = readMeCreator.description;
-    const packages = readMeCreator.packages;
-    const projectSteps = readMeCreator.projectSteps;
-    const howToUse = readMeCreator.howToUse;
-    const license = readMeCreator.license;
-    const contributors = readMeCreator.contributors;
-    const userName = readMeCreator.username;
-    const profilePicture = readMeCreator.profilePicture;
-    const authorName = readMeCreator.authorName;
+    const { authorName,
+        projectTitle,
+        description,
+        packages,
+        projectSteps,
+        howToUse,
+        license,
+        contributors,
+        userName,
+        profilePicture } = readMeCreator;
+    
+    
+
+    // const title = readMeCreator.projectTitle;
+    // const description = readMeCreator.description;
+    // const packages = readMeCreator.packages;
+    // const projectSteps = readMeCreator.projectSteps;
+    // const howToUse = readMeCreator.howToUse;
+    // const license = readMeCreator.license;
+    // const contributors = readMeCreator.contributors;
+    // const userName = readMeCreator.username;
+    // const profilePicture = readMeCreator.profilePicture;
+    // const authorName = readMeCreator.authorName;
 
     
-    const ghRequest = await axios.get(`https://api.github.com/users/${userName}`);
-    console.log(ghRequest);
-    const ghData = ghRequest.data;
-    const login = ghData.login;
-    const avatar = ghData.avatar_url;
-    const url = ghData.html_url;
+    const { data: {login, avatar_url:avatar, html_url:url} } = await axios.get(`https://api.github.com/users/${userName}`);
+    // console.log(data);
+    // const ghData = ghRequest.data;
+    // const login = ghData.login;
+    // const avatar = ghData.avatar_url;
+    // const url = ghData.html_url;
 
-    const finalProduct = (`# ${title}
+    const finalProduct = (`# ${projectTitle}
+    \n
+[![Repo size](https://img.shields.io/github/repo-size/sfcarz/GoodReadMeGenerator)](https://github.com/sfcarz/GoodReadMeGenerator)
+    \n## Description of this ReadMe Generator/CLI
     \n${description}
-    \n## Table of Contents\n[What you'll need to run program](#install)\n[How to Use Application](#stepByStep)\n[License](#license)\n[How to use Application](#howToUse)\n[Contributors](#contributors)
-    \n## Install\n* You will need these packages to run the Generator\n## ${packages}
-    \n## Step By Step\n${projectSteps}
-    \n## How to Use\n${howToUse}
-    \n## License 
-    ${license}
+    \n## Table of Contents
+- [What you'll need to run program](#install)
+- [How to Use Application](#step-By-step)
+- [License](#license)
+- [How to use Application](#howToUse)
+- [Contributors](#contributors-/-Credits)
+    \n## Install\nYou will need these packages to run the Generator\n * ${packages}
+    \n## Step By Step\n * ${projectSteps}
+    \n## How to Use\n * ${howToUse}
+    \n## License
+    \n * ${license}
     \n## Contributors / Credits
-    ${contributors}
-    \n## Author\n*${authorName}*\n[ProfileImage](${avatar})
-    \n## Git Hub User Name\n**${login}**
+    \n * ${contributors}
+    \n## Author\n * ${authorName}
+    \n![ProfileImage](${avatar})
+    \n## Git Hub User Name\n * ${login}
     \n## Author Git Hub URL Link\n(${url})
     `)
 
-    try {
-        const writeResult = fs.writeFileSync(path.join(__dirname, 'assets', 'readme.md'),
-            finalProduct)
-    } catch (error) {
-        console.error(error);
-    };
+
+    const writeResult = fs.writeFileSync(path.join(__dirname, 'assets', 'readme.md'),
+        finalProduct);
 
     console.log('Generating File...');
 };
 
 generator(); 
 
-// Creating an application or function to help create a ReadMe with the vitality to be effective.The generator will be structured in a specific form to maximize transfer of information from handler to user.
+// // Creating an application or function to help create a ReadMe with the vitality to be effective.The generator will be structured in a specific form to maximize transfer of information from handler to user.
+// [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bhagatabhijeet/chalkyourteam)
+//     [![GitHub forks](https://img.shields.io/github/forks/bhagatabhijeet/chalkyourteam)](https://github.com/bhagatabhijeet/chalkyourteam/network)
+//         [![GitHub stars](https://img.shields.io/github/stars/bhagatabhijeet/chalkyourteam)](https://github.com/bhagatabhijeet/chalkyourteam/stargazers)
