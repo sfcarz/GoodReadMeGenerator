@@ -18,7 +18,7 @@ async function generator() {
             },
             {
                 type: 'input',
-                message: 'What is the name of your Project?',
+                message: 'What is the name of your Project/Repo?',
                 name: 'projectTitle'
             },
             {
@@ -102,7 +102,7 @@ async function generator() {
 
     const finalProduct = (`# ${projectTitle}
     \n
-[![Repo size](https://img.shields.io/github/repo-size/sfcarz/GoodReadMeGenerator)](https://github.com/sfcarz/GoodReadMeGenerator)
+[![Repo size](https://img.shields.io/github/repo-size/sfcarz/${projectTitle})](https://github.com/sfcarz/${projectTitle})
     \n## Description of this ReadMe Generator/CLI
     \n${description}
     \n## Table of Contents
@@ -115,7 +115,7 @@ async function generator() {
     \n## Install\nYou will need these packages to run the Generator\n * ${packages}
     \n## Step By Step\n * ${projectSteps}
     \n## How to Use\n * ${howToUse}
-    \n## Example\n * ![](readMe.gif)
+    \n## Example\n![](readMe.gif)
     \n## License
     \n * ${license}
     \n## Contributors / Credits
